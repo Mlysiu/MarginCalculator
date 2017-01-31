@@ -6,6 +6,10 @@ import com.mlysiu.margincalculator.json.SchemaProvider
 
 import scalaz.{-\/, \/, \/-}
 
+/**
+  * This class expects to get schema on which it will calculate loan margin. The schema can be passed as a self class annotation
+  * that inherits from SchemaProvider {@link com.mlysiu.margincalculator.json.SchemaProvider}
+  */
 class MarginCalculator {
   self: SchemaProvider =>
 
@@ -21,7 +25,7 @@ class MarginCalculator {
     val reverseLtv = (deductible * 100) / loanAmount
 
     println(s"Calculation margin with LTV = $reverseLtv, loanAmount = $loanAmount and for $months months")
-    //TODO: pmlynarz: Logging?
+
     val timePeriods = schema.timePeriods.filter(_.months.eval(months))
     val marges = (tp: TimePeriod) => tp.marges.filter(mar => evalReverseLTV(mar.reverseLTV, reverseLtv))
     val loans = (m: Marge) => m.loanAmounts.filter(loan => evalLoanAmount(loan, loanAmount))

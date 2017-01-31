@@ -1,5 +1,8 @@
 package com.mlysiu.margincalculator.domain
 
+/**
+  * Domain type class that stores all domain objects
+  */
 object MarginCalculatorDomain {
 
   case class PriceTerms(bankName: String, timePeriods: List[TimePeriod])

@@ -5,6 +5,9 @@ import MarginCalculatorDomain.PriceTerms
 
 import scalaz.\/
 
+/**
+  * Defines all traits that can be used as schema providers.
+  */
 trait SchemaProvider {
   def provideSchema(): \/[String, PriceTerms]
 }

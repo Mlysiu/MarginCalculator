@@ -7,6 +7,9 @@ import scala.language.implicitConversions
 import scala.util.Try
 import scalaz.{-\/, \/, \/-}
 
+/**
+  * Main class responsible for validating input parameters and presenting calculated margin value to the user.
+  */
 object Booter {
   def main(args: Array[String]) {
     println(s"Launching application with ${args.toList.toString} input parameters")
